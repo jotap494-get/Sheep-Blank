@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f9fafb;
+  color: #333;
+}
+
+header {
+  display: flex;           /* ativa flexbox */
+  align-items: center;     /* alinha verticalmente */
+  justify-content: center; /* centraliza horizontalmente */
+  padding: 10px;
+  background: #1e1b50;
+  color: white;
+  gap: 10px;               /* espaço entre imagem e título */
+}
+
+header img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  
+}
+
+main {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.feed {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.feed-item {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 50px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s ease;
+
+  /* início da animação */
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.feed-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.20);
+}
+
+.feed-item h3 {
+  margin: 0 0 10px;
+  color: #4f46e5;
+}
+
+/* animação quando aparece na tela */
+.feed-item.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease;
+}
+
+.player {
+  flex: 2;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  display: none;
+  flex-direction: column;
+  position: relative;
+}
+
+.player-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#close-btn,
+#fullscreen-btn {
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+#close-btn:hover,
+#fullscreen-btn:hover {
+  background: #f0f0f0;
+  
+}
+
+.text-box {
+  min-height: 200px;
+  margin: 10px 0;
+  padding: 10px;
+  padding-top: 2px;
+  background: #eef2ff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  white-space: pre-wrap;
+  
+}
+
+/* quando estiver em tela cheia */
+.fullscreen {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  border-radius: 0;
+  z-index: 1000;
+  overflow-y: auto;
+  background: white;
+  padding: 20px;
+}
+
+footer {
+  margin-top: 80px;
+  background-color: #292626;
+  padding: 20px;
+  color: white;
+  
+  text-align: center; /* opcional, centraliza o texto */
+
+} 
+footer a{
+  color: #4f46e5;
+  text-decoration: none;
+}     

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sheep Blank - Biblioteca de Textos</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="shortcut icon" href="icone-192.png" type="image/x-icon">
+  <meta name="theme-color" content="#000000">
+
+</head>
+<body>
+  <header>
+    <img src="icone-192.png" alt="">
+    <h1>Sheep Blank</h1>
+    <br>
+    <p id="titulo"></p>
+    <br>
+    <p>Descubra histórias em várias línguas, com tradução instantânea.</p>
+  </header>
+
+  <main>
+    <section class="feed" id="feed"></section>
+
+    <section class="player" id="player">
+      <div class="player-header">
+        <button id="close-btn">✖ Fechar</button>
+        <button id="fullscreen-btn">⛶ Tela cheia</button>
+      </div>
+
+      <h2 id="item-title"></h2>
+      <div>
+        <label for="lang-select">Idioma:</label>
+        <select id="lang-select"></select>
+      </div>
+
+      <article id="translated-text" class="text-box"></article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Sheep Blank © 2025 — UM site e App com diversos textos e idiomas <br>
+      Autor: João Pedro Moreira de Araujo   <a href="https://www.instagram.com/mrr_jp?igsh=dnN0dzhsM3d5dXNy" target="_blank">instagram</a>
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
