@@ -38,7 +38,7 @@ main {
 .feed {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 15px;
 }
 
@@ -70,10 +70,15 @@ main {
   transform: translateY(0);
   transition: all 0.6s ease;
 }
+ select{
+  padding: 10px;
+  background-color: #666579;
+  color: white;
+}
 
 /* ===== Player ===== */
 .player {
-  flex: 2;
+  flex: 2opx;
   background: white;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -86,7 +91,7 @@ main {
 .player-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 #close-btn,
@@ -95,7 +100,7 @@ main {
   border: none;
   color: #555;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
   padding: 5px 10px;
   border-radius: 6px;
   transition: background 0.2s;
@@ -107,14 +112,15 @@ main {
 }
 
 .text-box {
-  min-height: 200px;
-  margin: 10px 0;
-  padding: 10px;
-  padding-top: 2px;
+  min-height: 250px;
+  margin: 50px 0;
+  padding: 15px;
+  padding-top: 20px;
   background: #eef2ff;
   border: 1px solid #ccc;
   border-radius: 6px;
   white-space: pre-wrap;
+  font-size: 26px;
 }
 
 /* ===== Tela cheia ===== */
