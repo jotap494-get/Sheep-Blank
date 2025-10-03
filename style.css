@@ -4,20 +4,23 @@ body {
   font-family: Arial, sans-serif;
   background: #f9fafb;
   color: #333;
-
-  display: flex;           /* ativa flexbox */
-  flex-direction: column;  /* organiza header, main e footer em coluna */
-  min-height: 100vh;       /* garante que ocupe toda a altura da tela */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+
 /* ===== Header ===== */
 header {
-  display: flex;              /* ativa flexbox */
-  align-items: center;        /* alinha verticalmente */
-  justify-content: center;    /* centraliza horizontalmente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 30px;
   background: #1e1b50;
   color: white;
-  gap: 10px;                  /* espaço entre imagem e título */
+  gap: 10px;
+  font-size: 20px;
+  text-align: center;
+  ;
 }
 
 header img {
@@ -27,13 +30,13 @@ header img {
 }
 
 /* ===== Main ===== */
-
 main {
-  flex: 1;                 /* faz main ocupar todo espaço disponível */
+  flex: 1;
   display: flex;
   gap: 20px;
   padding: 20px;
 }
+
 /* ===== Feed ===== */
 .feed {
   flex: 1;
@@ -43,15 +46,17 @@ main {
 }
 
 .feed-item {
-  background: white;
-  border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 20px;
   margin-top: 50px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.3s ease; /* animação inicial */
+  transition: transform 0.2s, box-shadow 0.3s ease;
   opacity: 0;
   transform: translateY(40px);
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  position: relative;
+  overflow: hidden;
 }
 
 .feed-item:hover {
@@ -59,18 +64,28 @@ main {
   box-shadow: 0 6px 12px rgba(0,0,0,0.20);
 }
 
-.feed-item h3 {
-  margin: 0 0 10px;
-  color: #4f46e5;
-}
-
-/* Animação quando aparece na tela */
 .feed-item.show {
   opacity: 1;
   transform: translateY(0);
   transition: all 0.6s ease;
 }
- select{
+
+.feed-item .overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border-radius: 0 0 10px 10px;
+}
+
+.feed-item h3 {
+  margin: 0 0 5px;
+  color: #fff;
+}
+
+select {
   padding: 10px;
   background-color: #666579;
   color: white;
@@ -154,33 +169,31 @@ footer a {
   text-decoration: none;
 }
 
-/* Para telas até 600px (celular) */
+/* ===== Responsivo ===== */
 @media (max-width: 600px) {
   main {
-    flex-direction: column; /* empilha as divs */
-    padding: 10px;          /* diminui o padding */
-    font-size: 20px;
+    flex-direction: column;
+    padding: 10px;
   }
 
   .feed {
-    grid-template-columns: 1fr; /* só uma coluna */
+    grid-template-columns: 1fr;
     gap: 10px;
   }
 
   .player {
-    flex: none;               /* não força altura grande */
-    display: block;           /* garante que apareça */
-    margin-top: 20px;         /* separa do feed */
+    flex: none;
+    display: block;
+    margin-top: 20px;
     padding: 10px;
   }
 
   .text-box {
-    min-height: 150px;       /* reduz altura mínima */
+    min-height: 150px;
     padding: 8px;
   }
 
   footer {
-    padding: 15px;           /* diminui footer */
+    padding: 15px;
   }
 }
-

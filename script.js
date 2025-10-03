@@ -1,7 +1,23 @@
-// ================== Textos de exemplo ==================
+const feed = document.getElementById("feed");
+const player = document.getElementById("player");
+const itemTitle = document.getElementById("item-title");
+const translatedText = document.getElementById("translated-text");
+const langSelect = document.getElementById("lang-select");
+const closeBtn = document.getElementById("close-btn");
+const fullscreenBtn = document.getElementById("fullscreen-btn");
+
+const languageNames = {
+  pt: "Português",
+  en: "Inglês",
+  es: "Espanhol",
+  fr: "Francês",
+  de: "Alemão"
+};
+
 const stories = [
   {
-    title: "O Mistério da Chave",
+    title: "O segredo da chave",
+    img: "https://m.media-amazon.com/images/I/81UoKzN6eJL._UF1000,1000_QL80_.jpg",
     texts: {
       pt: "Lucas encontrou uma chave antiga no sótão de sua avó. Curioso, ele procurou pela casa até encontrar uma porta secreta. Ao abrir, descobriu uma sala cheia de livros e objetos mágicos. Desde então, ele passou a visitar aquele lugar todos os dias, aprendendo segredos incríveis sobre magia e história da família.",
       en: "Lucas found an old key in his grandmother’s attic. Curious, he searched the house until he discovered a secret door. When he opened it, he found a room full of books and magical objects. Since then, he has visited that place every day, learning amazing secrets about magic and his family’s history.",
@@ -11,17 +27,19 @@ const stories = [
     }
   },
   {
-    title: "O Encontro na Floresta",
+    title: "O Encontro na Floresta encatado ",
+    img: "https://hotmart.s3.amazonaws.com/product_pictures/937a04fd-0b73-47c4-93ca-88d710443ebd/Leonardo_Phoenix_10_Capa_para_BookThe_cover_features_a_vibran_2.jpg",
     texts: {
-      pt: "Ana caminhava pela floresta quando ouviu um choro suave. Seguindo o som, encontrou um filhote de lobo preso entre os galhos. Ela o libertou e o animal a acompanhou até a vila. Desde aquele dia, eles se tornaram inseparáveis, compartilhando aventuras e protegendo a floresta juntos.",
-      en: "Ana was walking through the forest when she heard a soft cry. Following the sound, she found a wolf pup stuck among the branches. She freed it, and the animal followed her to the village. From that day on, they became inseparable, sharing adventures and protecting the forest together.",
-      es: "Ana caminaba por el bosque cuando escuchó un suave llanto. Siguiendo el sonido, encontró a un cachorro de lobo atrapado entre las ramas. Lo liberó y el animal la acompañó hasta la aldea. Desde ese día, se volvieron inseparables, compartiendo aventuras y protegiendo el bosque juntos.",
-      fr: "Ana marchait dans la forêt lorsqu’elle entendit un faible cri. En suivant le son, elle trouva un louveteau coincé entre les branches. Elle le libéra et l’animal la suivit jusqu’au village. Depuis ce jour, ils sont devenus inséparables, partageant des aventures et protégeant la forêt ensemble.",
-      de: "Ana ging durch den Wald, als sie ein leises Weinen hörte. Dem Geräusch folgend, fand sie ein Wolfsjunges, das zwischen den Zweigen feststeckte. Sie befreite es, und das Tier folgte ihr ins Dorf. Von diesem Tag an wurden sie unzertrennlich, teilten Abenteuer und beschützten gemeinsam den Wald."
+      pt: "Athur caminhava pela floresta quando ouviu um choro suave. Seguindo o som, encontrou um filhote de lobo preso entre os galhos. Ela o libertou e o animal a acompanhou até a vila. Desde aquele dia, eles se tornaram inseparáveis, compartilhando aventuras e protegendo a floresta juntos.",
+      en: "Athur was walking through the forest when she heard a soft cry. Following the sound, she found a wolf pup stuck among the branches. She freed it, and the animal followed her to the village. From that day on, they became inseparable, sharing adventures and protecting the forest together.",
+      es: "Athur caminaba por el bosque cuando escuchó un suave llanto. Siguiendo el sonido, encontró a un cachorro de lobo atrapado entre las ramas. Lo liberó y el animal la acompañó hasta la aldea. Desde ese día, se volvieron inseparables, compartiendo aventuras y protegiendo el bosque juntos.",
+      fr: "Athur marchait dans la forêt lorsqu’elle entendit un faible cri. En suivant le son, elle trouva un louveteau coincé entre les branches. Elle le libéra et l’animal la suivit jusqu’au village. Depuis ce jour, ils sont devenus inséparables, partageant des aventures et protégeant la forêt ensemble.",
+      de: "Athur ging durch den Wald, als sie ein leises Weinen hörte. Dem Geräusch folgend, fand sie ein Wolfsjunges, das zwischen den Zweigen feststeckte. Sie befreite es, und das Tier folgte ihr ins Dorf. Von diesem Tag an wurden sie unzertrennlich, teilten Abenteuer und beschützten gemeinsam den Wald."
     }
   },
   {
-    title: "O Relógio do Tempo",
+    title: "O Tempo escapou do relogio",
+    img: "https://m.media-amazon.com/images/I/91SlQvyHewL._UF1000,1000_QL80_.jpg",
     texts: {
       pt: "Miguel herdou um antigo relógio de bolso do seu avô. Ao girar o ponteiro, ele percebeu que podia voltar no tempo por alguns minutos. Usando esse poder, ajudou pessoas em pequenas situações, sempre aprendendo algo novo sobre a vida e o valor das escolhas.",
       en: "Miguel inherited an old pocket watch from his grandfather. When he turned the hand, he realized he could go back in time for a few minutes. Using this power, he helped people in small situations, always learning something new about life and the value of choices.",
@@ -31,7 +49,8 @@ const stories = [
     }
   },
   {
-    title: "A Biblioteca Secreta",
+    title: "a biblioteca secreta",
+    img: "https://m.media-amazon.com/images/I/616vEwCjTxL._UF1000,1000_QL80_.jpg",
     texts: {
       pt: "Sofia descobriu uma passagem secreta na biblioteca da escola. Lá dentro, encontrou livros que contavam histórias que nunca existiram no mundo real. Cada página ensinava lições valiosas sobre coragem, amizade e criatividade. Ela prometeu guardar aquele segredo para sempre.",
       en: "Sofia discovered a secret passage in the school library. Inside, she found books that told stories that never existed in the real world. Each page taught valuable lessons about courage, friendship, and creativity. She promised to keep that secret forever.",
@@ -42,6 +61,7 @@ const stories = [
   },
   {
     title: "O Pintor de Sonhos",
+    img: "https://www.papodecinema.com.br/wp-content/uploads/2022/02/20220216-o-pintor-de-sonhos-papo-de-cinema-cartaz.webp",
     texts: {
       pt: "João era um pintor que não desenhava o que via, mas o que as pessoas sonhavam. Cada quadro transformava sonhos em cores vivas. As pessoas vinham de longe para ver suas obras e se inspirar, percebendo que os sonhos poderiam se tornar realidade se acreditassem neles.",
       en: "João was a painter who didn’t paint what he saw, but what people dreamed. Each painting turned dreams into vivid colors. People came from far away to see his works and get inspired, realizing that dreams could become reality if they believed in them.",
@@ -52,6 +72,7 @@ const stories = [
   },
   {
     title: "A Cidade Submersa",
+    img: "https://m.media-amazon.com/images/I/91nLiWD7EpL._UF1000,1000_QL80_.jpg",
     texts: {
       pt: "Durante uma expedição submarina, Clara descobriu uma cidade antiga submersa. As construções ainda eram impressionantes, e em cada rua havia histórias de um povo esquecido. Ela registrou tudo e compartilhou com o mundo, lembrando que algumas maravilhas do passado ainda esperam para serem descobertas.",
       en: "During an underwater expedition, Clara discovered an ancient submerged city. The buildings were still impressive, and every street held stories of a forgotten people. She documented everything and shared it with the world, reminding everyone that some wonders of the past are still waiting to be discovered.",
@@ -62,6 +83,7 @@ const stories = [
   },
   {
     title: "A Ponte dos Mistérios",
+    img: "https://gataborralheira34.wordpress.com/wp-content/uploads/2020/02/image.jpeg?w=259",
     texts: {
       pt: "Pedro atravessava uma ponte antiga quando ouviu vozes sussurrando segredos do passado. Cada passo revelava memórias esquecidas da cidade. Ele se tornou guardião da ponte, mantendo viva a história e as lendas locais.",
       en: "Pedro was crossing an old bridge when he heard voices whispering secrets from the past. Each step revealed forgotten memories of the city. He became the guardian of the bridge, keeping alive the history and local legends.",
@@ -72,6 +94,7 @@ const stories = [
   },
   {
     title: "O Jardim Encantado",
+    img: "https://editoraappris.com.br/wp-content/uploads/2022/05/Edleia-Lopes_capa_14x21.jpg",
     texts: {
       pt: "Lúcia encontrou um jardim escondido atrás de uma parede de hera. Flores brilhavam em cores impossíveis e pássaros cantavam melodias mágicas. Cada visita a fazia sentir-se conectada com a natureza e com algo além do mundo visível.",
       en: "Lúcia discovered a garden hidden behind a wall of ivy. Flowers glowed in impossible colors, and birds sang magical melodies. Each visit made her feel connected to nature and something beyond the visible world.",
@@ -82,6 +105,7 @@ const stories = [
   },
   {
     title: "O Trem Fantasma",
+    img: "https://preview.redd.it/ghost-train-illustration-by-me-v0-k6c0ie98u1xd1.jpg?width=640&crop=smart&auto=webp&s=e6c4972353d61e55942317f3a6ef50717e486304",
     texts: {
       pt: "Em uma noite de neblina, Rafael ouviu o apito de um trem que não existia nos mapas. Curioso, embarcou e descobriu passageiros de diferentes épocas. Ele passou a viajar entre o passado e o presente, aprendendo lições que mudaram sua vida.",
       en: "On a foggy night, Rafael heard the whistle of a train that didn’t exist on the maps. Curious, he boarded and discovered passengers from different eras. He began traveling between past and present, learning lessons that changed his life.",
@@ -91,7 +115,8 @@ const stories = [
     }
   },
   {
-    title: "A Ilha dos Segredos",
+    title: "A Ilha dos misterios",
+    img: "https://m.media-amazon.com/images/I/51JUwfvzd1L._UF1000,1000_QL80_.jpg",
     texts: {
       pt: "Mariana chegou a uma ilha desconhecida, onde cada pedra parecia contar uma história. Animais falavam entre si, e árvores antigas guardavam memórias de exploradores. Ela passou dias explorando e descobriu que a ilha tinha vida própria.",
       en: "Mariana arrived at an unknown island, where every stone seemed to tell a story. Animals spoke to each other, and ancient trees held memories of explorers. She spent days exploring and discovered that the island had a life of its own.",
@@ -102,16 +127,18 @@ const stories = [
   },
   {
     title: "O Livro Infinito",
+    img: "https://m.media-amazon.com/images/I/91QKqz1x5UL._UF1000,1000_QL80_.jpg",
     texts: {
-      pt: "Caio encontrou um livro que nunca terminava. Cada vez que virava uma página, surgiam novas histórias e personagens. Ele percebeu que poderia criar mundos inteiros e se tornou um escritor que explorava infinitas possibilidades.",
-      en: "Caio found a book that never ended. Each time he turned a page, new stories and characters appeared. He realized he could create entire worlds and became a writer exploring infinite possibilities.",
-      es: "Caio encontró un libro que nunca terminaba. Cada vez que pasaba una página, surgían nuevas historias y personajes. Se dio cuenta de que podía crear mundos enteros y se convirtió en un escritor explorando posibilidades infinitas.",
-      fr: "Caio trouva un livre qui ne finissait jamais. Chaque fois qu’il tournait une page, de nouvelles histoires et personnages apparaissaient. Il réalisa qu’il pouvait créer des mondes entiers et devint un écrivain explorant des possibilités infinies.",
-      de: "Caio fand ein Buch, das nie endete. Jedes Mal, wenn er eine Seite umblätterte, erschienen neue Geschichten und Charaktere. Er erkannte, dass er ganze Welten erschaffen konnte, und wurde ein Schriftsteller, der unendliche Möglichkeiten erkundete."
+      pt: "Lua encontrou um livro que nunca terminava. Cada vez que virava uma página, surgiam novas histórias e personagens. Ele percebeu que poderia criar mundos inteiros e se tornou um escritor que explorava infinitas possibilidades.",
+      en: "Lua found a book that never ended. Each time he turned a page, new stories and characters appeared. He realized he could create entire worlds and became a writer exploring infinite possibilities.",
+      es: "Lua encontró un libro que nunca terminaba. Cada vez que pasaba una página, surgían nuevas historias y personajes. Se dio cuenta de que podía crear mundos enteros y se convirtió en un escritor explorando posibilidades infinitas.",
+      fr: "Lua trouva un livre qui ne finissait jamais. Chaque fois qu’il tournait une page, de nouvelles histoires et personnages apparaissaient. Il réalisa qu’il pouvait créer des mondes entiers et devint un écrivain explorant des possibilités infinies.",
+      de: "Lua fand ein Buch, das nie endete. Jedes Mal, wenn er eine Seite umblätterte, erschienen neue Geschichten und Charaktere. Er erkannte, dass er ganze Welten erschaffen konnte, und wurde ein Schriftsteller, der unendliche Möglichkeiten erkundete."
     }
   },
   {
-    title: "O Relâmpago Azul",
+    title: " Trovão Azul",
+    img: "https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/95/27/35/20394084.JPG",
     texts: {
       pt: "Durante uma tempestade, Elisa viu um relâmpago azul que tocou o solo e abriu um portal. Curiosa, atravessou e encontrou um mundo feito de luz e energia. Aprendeu que a coragem de seguir o desconhecido podia revelar universos incríveis.",
       en: "During a storm, Elisa saw a blue lightning strike the ground and open a portal. Curious, she went through and found a world made of light and energy. She learned that the courage to follow the unknown could reveal amazing universes.",
@@ -121,102 +148,56 @@ const stories = [
     }
   }
 ];
-
-// ================== Seletores ==================
-const feed = document.getElementById("feed");
-const player = document.getElementById("player");
-const closeBtn = document.getElementById("close-btn");
-const fullscreenBtn = document.getElementById("fullscreen-btn");
-const itemTitle = document.getElementById("item-title");
-const translatedText = document.getElementById("translated-text");
-const langSelect = document.getElementById("lang-select");
-const tituloMsg = document.getElementById("titulo");
-
-// idiomas disponíveis
-const languages = {
-  pt: "Português (Brasil)",
-  en: "Inglês",
-  es: "Espanhol",
-  fr: "Francês",
-  de: "Alemão"
-};
-
-// ================== Funções ==================
-
-// gera cards do feed
 function loadFeed() {
   feed.innerHTML = "";
   stories.forEach((story, index) => {
     const div = document.createElement("div");
     div.classList.add("feed-item");
-    div.innerHTML = `<h3>${story.title}</h3><p>${story.texts.pt.substring(0, 60)}...</p>`;
+    div.style.backgroundImage = `url(${story.img})`;
+
+    div.innerHTML = `
+      <div class="overlay">
+        <h3>${story.title}</h3>
+        <p>${story.texts.pt.substring(0, 60)}...</p>
+      </div>
+    `;
+
     div.addEventListener("click", () => openPlayer(index));
     feed.appendChild(div);
+
+    setTimeout(() => div.classList.add("show"), 100 * index);
   });
 }
 
-// abre o player com a história
 function openPlayer(index) {
+  const story = stories[index];
   player.style.display = "flex";
-  itemTitle.textContent = stories[index].title;
-  translatedText.textContent = stories[index].texts.pt;
+  itemTitle.textContent = story.title;
 
-  // limpa e adiciona opções de idioma
+  // Definindo o idioma inicial como português
+  translatedText.textContent = `${languageNames["pt"]}: ${story.texts.pt}`;
+
   langSelect.innerHTML = "";
-  for (const code in languages) {
+  for (const lang in story.texts) {
     const opt = document.createElement("option");
-    opt.value = code;
-    opt.textContent = languages[code];
+    opt.value = lang;
+    opt.textContent = languageNames[lang] || lang;
     langSelect.appendChild(opt);
   }
 
+  // Atualiza o texto ao mudar de idioma
   langSelect.onchange = () => {
-    translatedText.textContent = stories[index].texts[langSelect.value];
+    const selectedLang = langSelect.value;
+    translatedText.textContent = `${languageNames[selectedLang]}: ${story.texts[selectedLang]}`;
   };
 }
 
-// fecha o player
 closeBtn.addEventListener("click", () => {
   player.style.display = "none";
 });
 
-// tela cheia
 fullscreenBtn.addEventListener("click", () => {
   player.classList.toggle("fullscreen");
 });
 
-// mensagem dinâmica de saudação
-function updateGreeting() {
-  const hora = new Date().getHours();
-  let msg = "Bem-vindo!";
-  if (hora >= 6 && hora < 12) msg = "Bom dia!";
-  else if (hora >= 12 && hora < 18) msg = "Boa tarde!";
-  else if (hora >= 18 && hora < 23) msg = "Boa noite!";
-  else msg = "Boa madrugada!";
-
-  tituloMsg.textContent = msg;
-}
-
-
-// ================== Inicialização ==================
 loadFeed();
-updateGreeting();
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-}, { threshold: 0.2 });
-
-// observar cada feed-item
-document.querySelectorAll(".feed-item").forEach(item => {
-  observer.observe(item);
-});
-
- 
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("service-worker.js")
-        .then(() => console.log("Service Worker registrado"))
-        .catch(err => console.log(" Erro no SW:", err));
-    }
