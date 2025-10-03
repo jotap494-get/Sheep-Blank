@@ -159,6 +159,7 @@ footer a {
   main {
     flex-direction: column; /* empilha as divs */
     padding: 10px;          /* diminui o padding */
+    font-size: 20px;
   }
 
   .feed {
@@ -182,3 +183,4 @@ footer a {
     padding: 15px;           /* diminui footer */
   }
 }
+
